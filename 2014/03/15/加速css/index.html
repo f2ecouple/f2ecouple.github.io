@@ -3,16 +3,16 @@
 <head>
   <meta charset="utf-8">
   
-  <title>加速CSS | F2E COUPLE</title>
+  <title>加速你的CSS | F2E COUPLE</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="og:type" content="blog">
-<meta name="og:title" content="加速CSS">
+<meta name="og:title" content="加速你的CSS">
 <meta name="og:url" content="http://f2ecouple.github.io//2014/03/15/加速css/">
 <meta name="og:image">
 <meta name="og:site_name" content="F2E COUPLE">
-<meta name="og:description" content="当人们感觉到“平滑”时，一般是每一秒在屏幕上绘画的帧数超过了某一个值（FPS),
+<meta name="og:description" content="关于CSS优化这一块儿，人们常常的感觉是这个页面很平滑或者是很流畅，所已对CSS的优化可以涉及到两个方面。一个是减少页面reflow、repaint的次数，还有一种就是通过启动硬件加速，来调用硬件性能实现CSS的优化。
 关于平滑
-当人们感觉到“平滑”时，一般是每一秒在屏幕上绘画的帧数超过了某一个值（FPS),有一个非官方的值，即超过了30或者是更多。本地应用要比Web apps感觉良好，很大的原因在于执行swiping, tapping, pinching等保持一个较高的FPS值。但是现在很多的浏览器厂商都对一些特定的CSS属性提供">
+当人们感觉到“平滑”时，一般是每一秒在屏幕上绘画的帧数超过了某一个值（FPS),有一个非官方的值，即超过了30或者是更多。本地应用要比Web apps感觉良好，很大的原因">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternative" href="/atom.xml" title="F2E COUPLE" type="application/atom+xml">
@@ -81,7 +81,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      加速CSS
+      加速你的CSS
     </h1>
   
 
@@ -89,16 +89,18 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>当人们感觉到“平滑”时，一般是每一秒在屏幕上绘画的帧数超过了某一个值（FPS),<br><a id="more"></a></p>
+        <p>关于CSS优化这一块儿，人们常常的感觉是这个页面很平滑或者是很流畅，所已对CSS的优化可以涉及到两个方面。<br>一个是减少页面reflow、repaint的次数，还有一种就是通过启动硬件加速，来调用硬件性能实现CSS的优化。<br><a id="more"></a></p>
 <h2 id="关于平滑">关于平滑</h2>
 <p>当人们感觉到“平滑”时，一般是每一秒在屏幕上绘画的帧数超过了某一个值（FPS),<br>有一个非官方的值，即超过了30或者是更多。<br>本地应用要比Web apps感觉良好，很大的原因在于执行swiping, tapping, pinching等保持一个较高的FPS值。<br>但是现在很多的浏览器厂商都对一些特定的CSS属性提供了图形硬件加速。</p>
 <h3 id="repaint,_reflow/relayout,_restyle">repaint, reflow/relayout, restyle</h3>
 <p>不同的浏览器有不同的渲染过程，但是大部分浏览器都拥有下面的过程：</p>
 <ul>
 <li>parse HTML source code -&gt; DOM tree</li>
-<li>parse CSS代码，在这个部分就会剔出掉一些无用的前缀样式，比如-moz, -webkit等<br>*下面就到了最有兴趣的一部分了，rendering tree。render tree更像是缩短版的，但是也有一些不一样的地方,<br>render tree 是知道样式信息的，所以你对一个div设置display: none，它是不会出现在render tree 中的。同样的<br>还有其它的不可见的元素，比如head和head里面的元素。<h4 id="reflow_&amp;_repaint">reflow &amp; repaint</h4>
-当页面完成默认的绘制过后，当改变创建render tree的某些输入信息是会导致reflow或者是repaint<br>1.render tree的一部分需要重新验证或者是node的位置信息需要被重新计算，会导致发生reflow.<br>2.当屏幕的一部分需要被更新的时候，不管是一个节点的几何属性发生更改或者是样式更改。这种屏幕更新的<br>操作叫做repaint.</li>
+<li>parse CSS代码，在这个部分就会剔出掉一些无用的前缀样式，比如-moz, -webkit等</li>
+<li>下面就到了最有兴趣的一部分了，rendering tree。render tree更像是缩短版的DOM tree，但是也有一些不一样的地方,<br>render tree 是知道样式信息的，所以你对一个div设置display: none，它是不会出现在render tree 中的。同样的<br>还有其它的不可见的元素，比如head和head里面的元素。</li>
 </ul>
+<h4 id="reflow_&amp;_repaint">reflow &amp; repaint</h4>
+<p>当页面完成默认的绘制过后，当改变创建render tree的某些输入信息是会导致reflow或者是repaint<br>1.render tree的一部分需要重新验证或者是node的位置信息需要被重新计算，会导致发生reflow.<br>2.当屏幕的一部分需要被更新的时候，不管是一个节点的几何属性发生更改或者是样式更改。这种屏幕更新的<br>操作叫做repaint.</p>
 <figure class="highlight html5"><table><tr><td class="gutter"><pre>1
 2
 3
@@ -109,6 +111,84 @@ bStyle<span class="preprocessor">.border</span> = <span class="string">"10px sol
 bStyle<span class="preprocessor">.color</span> = <span class="string">"blue"</span> // repaint only
 </pre></td></tr></table></figure>
 
+<h4 id="reflow和repaint在浏览器端的优化">reflow和repaint在浏览器端的优化</h4>
+<p>浏览器为了减小repaint和reflow带来的负面效应，一般会延迟执行，或者是攒在一起集中执行。简单的说，浏览器会维护一个<br>列表，这个列表里面存放了需要执行的操作，它可以将多个操作进行合并执行，从而减少reflow或者repaint的次数。但是有些脚步<br>会阻止浏览器做这样的优化，让浏览器立即更新列表。这个常常发生在获取样式信息的时候，例如：</p>
+<ol>
+<li>offsetTop, offsetLeft, offsetWidth, offsetHeight</li>
+<li>scrollTop/Left/Width/Height</li>
+<li>clientTop/Left/Width/Height</li>
+<li>getComputedStyle(), or currentStyle in IE</li>
+</ol>
+<h4 id="reflow和repaint在程序上的优化">reflow和repaint在程序上的优化</h4>
+<ul>
+<li><p>不要单一的去改变样式，而是通过使用改变类名或者是修改cssText属性</p>
+<figure class="highlight html5"><table><tr><td class="gutter"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+</pre></td><td class="code"><pre>  //bad
+  var left = <span class="number">10</span>, top = <span class="number">20</span><span class="comment">;</span>
+  ele<span class="preprocessor">.style</span><span class="preprocessor">.top</span> = top + <span class="string">"px"</span><span class="comment">;</span>
+  ele<span class="preprocessor">.style</span><span class="preprocessor">.left</span> = left + <span class="string">"px"</span><span class="comment">;</span>
+
+  //good
+  el<span class="preprocessor">.className</span> += <span class="string">"current"</span><span class="comment">;</span>
+
+  //good
+  el<span class="preprocessor">.style</span><span class="preprocessor">.cssText</span> = <span class="string">";left: "</span> + left + <span class="string">"px; top: "</span> + top + <span class="string">"px"</span><span class="comment">;</span>
+</pre></td></tr></table></figure>
+</li>
+<li><p>将对DOM的改变离线话，即不在动态的DOM树中，而是：</p>
+<ul>
+<li>使用documentFragements来保留临时的更改</li>
+<li>克隆你要改变的节点，然后在克隆的节点上对DOM进行改变，然后在改变原来的节点</li>
+<li>使用display: none先把元素进行隐藏，然后在对该元素进行改变。改变完后在进行显示</li>
+</ul>
+</li>
+<li><p>不要循环地对computed样式进行获取，而是通过对样式信息进行缓存。</p>
+<figure class="highlight html5"><table><tr><td class="gutter"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+</pre></td><td class="code"><pre>    // no-no!
+    for(big<span class="comment">; loop; here) {</span>
+        el<span class="preprocessor">.style</span><span class="preprocessor">.left</span> = el<span class="preprocessor">.offsetLeft</span> + <span class="number">10</span> + <span class="string">"px"</span><span class="comment">;</span>
+        el<span class="preprocessor">.style</span><span class="preprocessor">.top</span>  = el<span class="preprocessor">.offsetTop</span>  + <span class="number">10</span> + <span class="string">"px"</span><span class="comment">;</span>
+    }
+
+    // better
+    var left = el<span class="preprocessor">.offsetLeft</span>,
+        top  = el<span class="preprocessor">.offsetTop</span>
+        esty = el<span class="preprocessor">.style</span><span class="comment">;</span>
+    for(big<span class="comment">; loop; here) {</span>
+        left += <span class="number">10</span><span class="comment">;</span>
+        top  += <span class="number">10</span><span class="comment">;</span>
+        esty<span class="preprocessor">.left</span> = left + <span class="string">"px"</span><span class="comment">;</span>
+        esty<span class="preprocessor">.top</span>  = top + <span class="string">"px"</span><span class="comment">;</span>
+    }
+</pre></td></tr></table></figure>
+</li>
+<li><p>在写程序的时候多考虑哪些操作可能会造成大面积的reflow或者是repaint, 然后尽量去避免这些操作。</p>
+</li>
+</ul>
 <h3 id="可以启动GPU加速的属性">可以启动GPU加速的属性</h3>
 <ul>
 <li>常规的布局(layout)组合</li>
@@ -121,7 +201,7 @@ bStyle<span class="preprocessor">.color</span> = <span class="string">"blue"</sp
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://f2ecouple.github.io/2014/03/15/加速css/" data-id="gi11919rb23x8thg" class="article-share-link">Share</a>
+      <a data-url="http://f2ecouple.github.io/2014/03/15/加速css/" data-id="mrd868fqbbug0sox" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/css/">css</a></li></ul>
@@ -132,11 +212,11 @@ bStyle<span class="preprocessor">.color</span> = <span class="string">"blue"</sp
     
 <nav id="article-nav">
   
-    <a href="/2014/03/15/snap面试/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2014/03/15/sass基本语法/" id="article-nav-newer" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Newer</strong>
       <div class="article-nav-title">
         
-          snap面试
+          sass基本语法
         
       </div>
     </a>
@@ -156,7 +236,7 @@ bStyle<span class="preprocessor">.color</span> = <span class="string">"blue"</sp
   <div class="widget-wrap">
     <h3 class="widget-title">Categories</h3>
     <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/shuang/">shuang</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/xiong/">xiong</a><span class="category-list-count">2</span></li></ul>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/shuang/">shuang</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/xiong/">xiong</a><span class="category-list-count">1</span></li></ul>
     </div>
   </div>
 
@@ -165,7 +245,7 @@ bStyle<span class="preprocessor">.color</span> = <span class="string">"blue"</sp
   <div class="widget-wrap">
     <h3 class="widget-title">Tags</h3>
     <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/css/">css</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/javascript/">javascript</a><span class="tag-list-count">1</span></li></ul>
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/css/">css</a><span class="tag-list-count">2</span></li></ul>
     </div>
   </div>
 
@@ -174,7 +254,7 @@ bStyle<span class="preprocessor">.color</span> = <span class="string">"blue"</sp
   <div class="widget-wrap">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/tags/css/" style="font-size: 20.00px;">css</a><a href="/tags/javascript/" style="font-size: 10.00px;">javascript</a>
+      <a href="/tags/css/" style="font-size: NaNpx;">css</a>
     </div>
   </div>
 
@@ -183,7 +263,7 @@ bStyle<span class="preprocessor">.color</span> = <span class="string">"blue"</sp
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/03">March 2014</a><span class="archive-list-count">3</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/03">March 2014</a><span class="archive-list-count">6</span></li></ul>
     </div>
   </div>
 
@@ -195,15 +275,23 @@ bStyle<span class="preprocessor">.color</span> = <span class="string">"blue"</sp
       <ul>
         
           <li>
+            <a href="/2014/03/17/用git实现版本管理/">用git实现版本管理</a>
+          </li>
+        
+          <li>
+            <a href="/2014/03/17/css常用tip/">css常用Tip</a>
+          </li>
+        
+          <li>
+            <a href="/2014/03/16/css宽度计算算法/">css宽度计算算法</a>
+          </li>
+        
+          <li>
+            <a href="/2014/03/16/css常用布局及其原理分析/">css常用布局及其原理分析</a>
+          </li>
+        
+          <li>
             <a href="/2014/03/15/sass基本语法/">sass基本语法</a>
-          </li>
-        
-          <li>
-            <a href="/2014/03/15/snap面试/">snap面试</a>
-          </li>
-        
-          <li>
-            <a href="/2014/03/15/加速css/">加速CSS</a>
           </li>
         
       </ul>
