@@ -10,7 +10,12 @@
 <meta name="og:url" content="http://f2ecouple.github.io//2014/03/16/css宽度计算算法/">
 <meta name="og:image">
 <meta name="og:site_name" content="F2E COUPLE">
-<meta name="og:description">
+<meta name="og:description" content="宽度计算在CSS中看似平常的一项技能，但是其中却有不少需要注意的地方，比如shrink-to-fit、repleaced-element等…
+C.B.
+要想真正的弄明白宽度的计算，那么对于包含块的理解那肯定是不可或缺的。
+
+根元素的包含块是一个叫做初始包含块的方形区域，通常在流媒体中被称之为view port
+对于其他的position 为 ‘relative’ 或者 ‘static’ 的元素，他">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternative" href="/atom.xml" title="F2E COUPLE" type="application/atom+xml">
@@ -67,6 +72,10 @@
   <time datetime="2014-03-16T14:34:54.000Z" itemprop="datePublished">Mar 16 2014</time>
 </a>
     
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/xiong/">xiong</a>
+  </div>
+
   </div>
   <div class="article-inner">
     
@@ -83,13 +92,93 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        
+        <p>宽度计算在CSS中看似平常的一项技能，但是其中却有不少需要注意的地方，比如shrink-to-fit、repleaced-element等…<br><a id="more"></a></p>
+<h2 id="C-B-">C.B.</h2>
+<p>要想真正的弄明白宽度的计算，那么对于包含块的理解那肯定是不可或缺的。</p>
+<ol>
+<li>根元素的包含块是一个叫做初始包含块的方形区域，通常在流媒体中被称之为view port</li>
+<li>对于其他的position 为 ‘relative’ 或者 ‘static’ 的元素，他们的包含块是最近的块级祖先元素的 <em>content box</em> 边框</li>
+<li>如果元素的position 为 fixed,那么他的包含块为viewport(在流媒体中) </li>
+<li>如果元素的position 为 absolute, 那么他的包含块由最近的position为’relative’ 、’absolute’或者’fixed’的祖先元素的padding edage所创建</li>
+</ol>
+<h2 id="关于宽度">关于宽度</h2>
+<h4 id="非替换性的行内元素">非替换性的行内元素</h4>
+<p>宽度的属性对于non-replaced的inline元素是不起作用的，non-replaced元素的宽度是由框内所渲染的内容所决定的。</p>
+<h4 id="替换性的行内元素">替换性的行内元素</h4>
+<ul>
+<li>如果元素的width和height的计算值都是”auto”, 但是元素有一个自带的宽度，那么width的使用值就是这个自带的宽度</li>
+<li>如果元素的width和height的计算值都是”auto”, 但是元素没有自带的宽度，但是有自带的高度和自带的比例；或者是width的计算值是’auto’，但是height的计算值为其他非auto的值，元素拥有一个自带的比例，这时width的使用值为：(自带高度) * (自带比例)<blockquote>
+<p>这个方式在img标签的高度和宽度设置中有所体现，例如一张235 <em> 80的图片放在img标签中，当给其设置高度为:100px, 通过调试工具我们可以发现元素的宽度变成了：<br>100 </em> ( 235 / 80) ~= 294</p>
+</blockquote>
+</li>
+</ul>
+<p><a href="http://www.w3.org/TR/CSS21/conform.html#replaced-element" target="_blank">repalced element</a></p>
+<h4 id="常规流中块级的非替换元素">常规流中块级的非替换元素</h4>
+<p> 下面的公式用于计算相应的值：</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre>1
+</pre></td><td class="code"><pre><span class="string">'margin-left'</span> + <span class="string">'border-left-width'</span> + <span class="string">'padding-left'</span> + <span class="string">'width'</span> + <span class="string">'padding-right'</span> + <span class="string">'border-right-width'</span> + <span class="string">'margin-right'</span> = <span class="keyword">C</span>.B.的宽度
+</pre></td></tr></table></figure>
+
+<p>如果’margin-left’和’margin-right’都是auto,那么他们的使用值相等</p>
+<h4 id="常规流中的块级替换元素">常规流中的块级替换元素</h4>
+<p>width的使用值和替换的行内元素计算方式相同</p>
+<h4 id="浮动，非替换元素">浮动，非替换元素</h4>
+<ul>
+<li>如果’margin-left’和’margin-right’都是’auto’, 那么它们的使用值为’0’</li>
+<li>如果’width’的计算值为’auto’, 那么它的使用值是 <a href="http://www.w3help.org/zh-cn/causes/RD8005" target="_blank"><em>‘shrink-to-fit’</em></a>的宽度 <figure class="highlight"><table><tr><td class="gutter"><pre>1
+2
+3
+4
+5
+</pre></td><td class="code"><pre>  preferred width <span class="subst">=</span> 将内容进行格式化，去除非显示声明的换行后的宽度
+  preferred minimum width <span class="subst">=</span> 加上所有可能的换行
+  available width <span class="subst">=</span> C<span class="built_in">.</span>B<span class="built_in">.</span>的宽度  <span class="subst">-</span> (<span class="string">'margin-left'</span> <span class="subst">+</span> <span class="string">'border-left-width'</span> <span class="subst">+</span>
+  <span class="string">'padding-left'</span> <span class="subst">+</span> <span class="string">'padding-right'</span> <span class="subst">+</span> <span class="string">'border-right-width'</span> <span class="subst">+</span> <span class="string">'margin-right'</span> <span class="subst">+</span> 相关滚动条的宽度)
+  shrink<span class="attribute">-to</span><span class="attribute">-fit</span> width <span class="subst">=</span> <span class="keyword">min</span>(<span class="keyword">max</span>(preferred minimum width, available width), preferred width)
+</pre></td></tr></table></figure>
+
+</li>
+</ul>
+<h4 id="浮动，替换元素">浮动，替换元素</h4>
+<ul>
+<li>如果’margin-left’和’margin-right’都是’auto’, 那么它们的使用值为’0’</li>
+<li>width的使用值和替换的行内元素计算方式相同</li>
+</ul>
+<h4 id="绝对定位,_非替换元素">绝对定位, 非替换元素</h4>
+<p> 下面的公式用于计算相应的值：</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre>1
+</pre></td><td class="code"><pre><span class="string">'left'</span> + <span class="string">'margin-left'</span> + <span class="string">'border-left-width'</span> + <span class="string">'padding-left'</span> + <span class="string">'width'</span> + <span class="string">'padding-right'</span> + <span class="string">'border-right-width'</span> + <span class="string">'margin-right'</span> + <span class="string">'right'</span> = <span class="keyword">C</span>.B.的宽度
+</pre></td></tr></table></figure>
+
+<ul>
+<li>如果’left’, ‘width’和’right’ 都是 auto。首先设置’margin-left’和’margin-right’ 为auto的使用值为0,如果’direction’为’ltr’, 那么设置left为静态位置。width和right的计算套用下面的规则3</li>
+<li>如果这个三个值都不是auto, 如果’margin-left’和’margin-right’的值为’auto’, 那么将’margin-left’和’margin-right’假设为相等的值带入公式进行计算, 如果解出的值为负数，当方向为’ltr’时，将’margin-left’设置为0，然后解出’margin-right’的值 如果padding, margin, border, width, left, right的和大于C.B.的宽度，那么忽略’right’值（direction 为 ‘ltr’）</li>
+</ul>
+<ol>
+<li>‘left’和’width’为auto, ‘right’不为’auto’, width为<em>shrink-to-fit</em>, 然后解出left值</li>
+<li>‘left’和’right’为auto, ‘width’不为’auto’, ‘left’或者’right’为静态定位位置</li>
+<li>‘width’和’right’为auto, ‘left’不为’auto’, width为<em>shrink-to-fit</em>, 然后解出right值</li>
+<li>‘left’为auto, ‘width’和’right’不为auto, 带入公式算出’left’</li>
+<li>‘width’为auto, ‘left’和’right’不为auto, 带入公式算出’width’</li>
+<li>‘right’为auto, ‘left’和’width’不为auto, 带入公式算出’right’</li>
+</ol>
+<h2 id="个人总结">个人总结</h2>
+<p>关于shink-to-fit使用场景：</p>
+<ul>
+<li>宽度为auto的非替换浮动元素</li>
+<li>非替换绝对定位元素，width为auto，非确定性定位（left, right只设置一个或者都没有设置）</li>
+</ul>
+<p><p data-height="268" data-theme-id="0" data-slug-hash="arDyH" data-default-tab="result" class='codepen'>See the Pen <a href='http://codepen.io/f2ecouple/pen/arDyH/'>arDyH</a> by shawnxiao (<a href='http://codepen.io/f2ecouple'>@f2ecouple</a>) on <a href='http://codepen.io'>CodePen</a>.</p></p>
+<script async src="//codepen.io/assets/embed/ei.js"></script>
+
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://f2ecouple.github.io/2014/03/16/css宽度计算算法/" data-id="p24m79zq6ociktku" class="article-share-link">Share</a>
+      <a data-url="http://f2ecouple.github.io/2014/03/16/css宽度计算算法/" data-id="qkbvus0hcm0x0awi" class="article-share-link">Share</a>
       
       
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/css/">css</a></li></ul>
+
     </footer>
   </div>
   
@@ -125,7 +214,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Categories</h3>
     <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/shuang/">shuang</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/xiong/">xiong</a><span class="category-list-count">1</span></li></ul>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/css/">css</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/shuang/">shuang</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/xiong/">xiong</a><span class="category-list-count">2</span></li></ul>
     </div>
   </div>
 
@@ -134,7 +223,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tags</h3>
     <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/css/">css</a><span class="tag-list-count">2</span></li></ul>
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/css/">css</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/xiong/">xiong</a><span class="tag-list-count">1</span></li></ul>
     </div>
   </div>
 
@@ -143,7 +232,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/tags/css/" style="font-size: NaNpx;">css</a>
+      <a href="/tags/css/" style="font-size: 20.00px;">css</a><a href="/tags/xiong/" style="font-size: 10.00px;">xiong</a>
     </div>
   </div>
 
@@ -152,7 +241,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/03">March 2014</a><span class="archive-list-count">6</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/03">March 2014</a><span class="archive-list-count">15</span></li></ul>
     </div>
   </div>
 
@@ -164,23 +253,23 @@
       <ul>
         
           <li>
-            <a href="/2014/03/17/用git实现版本管理/">用git实现版本管理</a>
+            <a href="/2014/03/30/w3help使用总结-目录分享/">w3help使用总结-目录分享</a>
           </li>
         
           <li>
-            <a href="/2014/03/17/css常用tip/">css常用Tip</a>
+            <a href="/2014/03/27/angular与sass开发web应用实践-什么是sass/">Angular与SASS开发WEB应用实践-什么是sass</a>
           </li>
         
           <li>
-            <a href="/2014/03/16/css宽度计算算法/">css宽度计算算法</a>
+            <a href="/2014/03/27/angular与sass开发web应用实践-什么是angular/">Angular与SASS开发WEB应用实践-什么是angular</a>
           </li>
         
           <li>
-            <a href="/2014/03/16/css常用布局及其原理分析/">css常用布局及其原理分析</a>
+            <a href="/2014/03/27/es5规范系列/">ES5规范系列</a>
           </li>
         
           <li>
-            <a href="/2014/03/15/sass基本语法/">sass基本语法</a>
+            <a href="/2014/03/27/es5的polyfill系列-bind/">ES5的polyfill系列-bind</a>
           </li>
         
       </ul>
