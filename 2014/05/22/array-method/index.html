@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Array method | F2E COUPLE</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="og:type" content="blog">
+<meta name="og:title" content="Array method">
+<meta name="og:url" content="http://f2ecouple.github.io//2014/05/22/array-method/">
+<meta name="og:image">
+<meta name="og:site_name" content="F2E COUPLE">
+<meta name="og:description" content="Array Methods
+concat()
+concat()方法会返回一个当前数组和其他数组或值合并的新数组。语法：  
+arr.concat(value1, value2, ..., valueN);  
+例1：  
+var alpha = ['a', 'b', 'c'];  
+var numeric = [1, 2, 3];  
+var alphaNumeric = alpha.concat">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternative" href="/atom.xml" title="F2E COUPLE" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  <link href="http://fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" href="/css/style.css" type="text/css">
+  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+  
+</head>
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">F2E COUPLE</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">我和Ta的前端博客，我们的前端成长！</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><input type="submit" value="&#xF002;" class="search-form-submit"><input type="hidden" name="q" value="site:http://f2ecouple.github.io/"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-array-method" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2014/05/22/array-method/" class="article-date">
+  <time datetime="2014-05-22T15:02:30.000Z" itemprop="datePublished">May 22 2014</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/shuang/">shuang</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Array method
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="Array_Methods">Array Methods</h2>
+<h3 id="concat()">concat()</h3>
+<p>concat()方法会返回一个当前数组和其他数组或值合并的新数组。<br><a id="more"></a><br>语法：  </p>
+<pre><code>arr.concat(value1, value2, <span class="keyword">...</span>, valueN);  
+</code></pre><p>例1：  </p>
+<pre><code><span class="reserved">var</span> alpha = [<span class="string">'a'</span>, <span class="string">'b'</span>, <span class="string">'c'</span>];  
+<span class="reserved">var</span> numeric = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>];  
+<span class="reserved">var</span> alphaNumeric = alpha.concat(numeric);  
+<span class="built_in">console</span>.log(alphaNumeric);   <span class="regexp">//</span>输出[<span class="string">'a'</span>, <span class="string">'b'</span>, <span class="string">'c'</span>, <span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>]  
+</code></pre><p>例2：合并多个数组  </p>
+<pre><code><span class="keyword">var</span> num1 = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>];  
+<span class="keyword">var</span> num2 = [<span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>];  
+<span class="keyword">var</span> num3 = [<span class="number">7</span>, <span class="number">8</span>, <span class="number">9</span>];  
+<span class="keyword">var</span> nums = num1.<span class="keyword">concat</span>(num2, num3);  
+console.log(nums);  <span class="comment">//输出[1, 2, 3, 4, 5, 6, 7, 8, 9]  </span>
+</code></pre><h3 id="indexOf()">indexOf()</h3>
+<p>indexOf()方法可返回某个指定的字符串值在字符串中首次出现的位置，如果没有找到则返回-1。<br>语法：  </p>
+<pre><code><span class="tag">arr</span><span class="class">.indexOf</span>(<span class="tag">searchElement</span><span class="attr_selector">[, fromIndex]</span>);
+</code></pre><p>例如：  </p>
+<pre><code><span class="keyword">var</span> <span class="keyword">array</span> = [<span class="number">2</span>, <span class="number">5</span>, <span class="number">9</span>];  
+<span class="keyword">var</span> <span class="keyword">index</span> = <span class="keyword">array</span>.indexOf(<span class="number">2</span>);    
+console.log(<span class="keyword">index</span>);   <span class="comment">//返回0</span>
+<span class="keyword">index</span> = <span class="keyword">array</span>.indexOf(<span class="number">7</span>);  <span class="comment">//返回-1，数组中没有字符7，找不到  </span>
+</code></pre><h3 id="join()">join()</h3>
+<p>join()方法把数组中的所有元素加入到一个字符串中。<br>语法：  </p>
+<pre><code><span class="attribute">str </span>=<span class="string"> arr.join(separator);  </span>
+</code></pre><p>例如：  </p>
+<pre><code><span class="built_in">var</span> a <span class="subst">=</span> <span class="literal">new</span> <span class="built_in">Array</span>(<span class="string">'Wind'</span>, <span class="string">'Rain'</span>, <span class="string">'Fire'</span>);  
+<span class="built_in">var</span> myVar1 <span class="subst">=</span> a<span class="built_in">.</span><span class="keyword">join</span>();    
+<span class="built_in">var</span> myVar2 <span class="subst">=</span> a<span class="built_in">.</span><span class="keyword">join</span>(<span class="string">', '</span>);  
+<span class="built_in">var</span> myVar3 <span class="subst">=</span> a<span class="built_in">.</span><span class="keyword">join</span>(<span class="string">' + '</span>);  
+console<span class="built_in">.</span><span class="keyword">log</span>(myVar1);   <span class="comment">//返回Wind,Rain,Fire </span>
+console<span class="built_in">.</span><span class="keyword">log</span>(myVar2);   <span class="comment">//返回Wind, Rain, Fire </span>
+console<span class="built_in">.</span><span class="keyword">log</span>(myVar3);   <span class="comment">//返回Wind + Rain + Fire   </span>
+</code></pre><h3 id="lastIndexOf()">lastIndexOf()</h3>
+<p>lastIndexOf() 方法可返回一个指定的字符串值最后出现的位置，在一个字符串中的指定位置从后向前搜索，如果找不到则返回-1。<br>语法：  </p>
+<pre><code><span class="tag">array</span><span class="class">.lastIndexOf</span>(<span class="tag">searchElement</span><span class="attr_selector">[, fromIndex]</span>);  
+</code></pre><p>例如：  </p>
+<pre><code><span class="keyword">var</span> <span class="keyword">array</span> = [<span class="number">2</span>, <span class="number">5</span>, <span class="number">9</span>, <span class="number">2</span>];  
+<span class="keyword">var</span> <span class="keyword">index</span> = <span class="keyword">array</span>.lastIndexOf(<span class="number">2</span>);   <span class="comment">//index是3  </span>
+<span class="keyword">index</span> = <span class="keyword">array</span>.lastIndexOf(<span class="number">7</span>);   <span class="comment">//index是-1  </span>
+<span class="keyword">index</span> = <span class="keyword">array</span>.lastIndexOf(<span class="number">2</span>, <span class="number">3</span>);  <span class="comment">//index是3  </span>
+</code></pre><h3 id="pop()">pop()</h3>
+<p>pop()方法可以删除一个数组中的最后一个元素并且返回该元素。<br>语法：  </p>
+<pre><code>arr.<span class="keyword">pop</span>();  
+</code></pre><p>例如：  </p>
+<pre><code><span class="reserved">var</span> myFish = [<span class="string">'angel'</span>, <span class="string">'clown'</span>, <span class="string">'mandarin'</span>, <span class="string">'surgeon'</span>];  
+<span class="built_in">console</span>.log(<span class="string">'myFish before: '</span> + myFish);  
+<span class="reserved">var</span> popped = myFish.pop();  
+<span class="built_in">console</span>.log(<span class="string">'myFish after: '</span> + myFish);  
+<span class="built_in">console</span>.log(<span class="string">'Removed this element: '</span> + poped);  
+/*  
+    log的结果：  
+    myFish <span class="attribute">before</span>: angel,clown,mandarin,surgeon  
+    myFish <span class="attribute">after</span>: angel,clown,mandarin  
+    Removed <span class="keyword">this</span> <span class="attribute">element</span>: surgeon
+*/  
+</code></pre><h3 id="push()">push()</h3>
+<p>push()方法可以添加一个或多个元素到数组的末尾，并返回新数组的长度。<br>语法：  </p>
+<pre><code>arr.push(element1, <span class="keyword">...</span>, elementN);  
+</code></pre><p>例如：  </p>
+<pre><code><span class="reserved">var</span> sports = [<span class="string">'soccer'</span>, <span class="string">'baseball'</span>];  
+<span class="reserved">var</span> total = sports.push(<span class="string">'football'</span>, <span class="string">'swimming'</span>);  
+<span class="built_in">console</span>.log(sports);  <span class="regexp">//</span>[<span class="string">'soccer'</span>, <span class="string">'baseball'</span>, <span class="string">'football'</span>, <span class="string">'swimming'</span>]
+<span class="built_in">console</span>.log(total);   <span class="regexp">//</span><span class="number">4</span>  
+</code></pre><h3 id="reverse()">reverse()</h3>
+<p>reverse()方法可以使数组反向。<br>语法：  </p>
+<pre><code>arr.<span class="keyword">reverse</span>();  
+</code></pre><p>例如：  </p>
+<pre><code>var myArray = [<span class="string">'one'</span>, <span class="string">'two'</span>, <span class="string">'three'</span>];  
+myArray.<span class="keyword">reverse</span>();  
+console.<span class="keyword">log</span>(myArray);  <span class="regexp">//</span>[<span class="string">'three'</span>, <span class="string">'two'</span>, <span class="string">'one'</span>]  
+</code></pre><h3 id="shift()">shift()</h3>
+<p>shift()方法可以删除数组的第一个元素并返回该元素。这个方法会改变数组的长度。<br>语法：  </p>
+<pre><code>arr.<span class="keyword">shift</span>();  
+</code></pre><p>例如：  </p>
+<pre><code><span class="reserved">var</span> myFish = [<span class="string">'angel'</span>, <span class="string">'clown'</span>, <span class="string">'mandarin'</span>, <span class="string">'surgeon'</span>];
+<span class="built_in">console</span>.log(<span class="string">'myFish before: '</span> + myFish);
+<span class="reserved">var</span> shifted = myFish.shift();
+<span class="built_in">console</span>.log(<span class="string">'myFish after: '</span> + myFish);
+<span class="built_in">console</span>.log(<span class="string">'Removed this element: '</span> + shifted);  
+/*  
+    log的结果：  
+    myFish <span class="attribute">before</span>: angel,clown,mandarin,surgeon
+    myFish <span class="attribute">after</span>: clown,mandarin,surgeon
+    Removed <span class="keyword">this</span> <span class="attribute">element</span>: angel
+*/  
+</code></pre><h3 id="slice()">slice()</h3>
+<p>slice()方法可以提取一个数组的一部分，并以一个新数组对象来返回提取的部分。<br>语法：  </p>
+<pre><code>arr.slice(<span class="operator"><span class="keyword">begin</span>[, <span class="keyword">end</span>]);</span>  
+</code></pre><p>其中，begin是开始截取的位置，end是截取结束的位置。截取的部分是begin和end中间的部分，而不包括end。<br>例如：  </p>
+<pre><code><span class="reserved">var</span> fruits = [<span class="string">'Banana'</span>, <span class="string">'Orange'</span>, <span class="string">'Lemon'</span>, <span class="string">'Apple'</span>, <span class="string">'Mango'</span>];  
+<span class="reserved">var</span> citrus = fruits.slice(<span class="number">1</span>, <span class="number">3</span>);  
+<span class="built_in">console</span>.log(citrus);  <span class="regexp">//</span>输出[<span class="string">'Orange'</span>, <span class="string">'Lemon'</span>]  
+</code></pre><h3 id="sort()">sort()</h3>
+<p>sort()方法用于对数组的元素进行排序。<br>语法：  </p>
+<pre><code><span class="tag">arr</span><span class="class">.sort</span>(<span class="attr_selector">[compareFunction]</span>);  
+</code></pre><p>例如：  </p>
+<pre><code>var fruit = [<span class="string">"apples"</span>, <span class="string">"bananas"</span>, <span class="string">"Cherries"</span>];
+fruit.sort();    <span class="regexp">//</span> [<span class="string">"Cherries"</span>, <span class="string">"apples"</span>, <span class="string">"bananas"</span>]
+var scores = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">10</span>, <span class="number">21</span>]; 
+scores.sort();   <span class="regexp">//</span> [<span class="number">1</span>, <span class="number">10</span>, <span class="number">2</span>, <span class="number">21</span>]
+var things = [<span class="string">"word"</span>, <span class="string">"Word"</span>, <span class="string">"1 Word"</span>, <span class="string">"2 Words"</span>];
+things.sort();   <span class="regexp">//</span> [<span class="string">"1 Word"</span>, <span class="string">"2 Words"</span>, <span class="string">"Word"</span>, <span class="string">"word"</span>]  
+</code></pre><h3 id="splice()">splice()</h3>
+<p>splice()方法可以改变一个数组的内容，当删除旧元素时添加新元素。<br>语法：  </p>
+<pre><code>array.splice(index , howMany[, element1[, <span class="keyword">...</span>[, elementN]]]);
+array.splice(index);     // SpiderMonkey/Firefox extension  
+</code></pre><p>例如：  </p>
+<pre><code><span class="reserved">var</span> myFish = [<span class="string">'angel'</span>, <span class="string">'clown'</span>, <span class="string">'mandarin'</span>, <span class="string">'surgeon'</span>];  
+<span class="reserved">var</span> removed = myFish.splice(<span class="number">2</span>, <span class="number">0</span>, <span class="string">'drum'</span>);  
+<span class="built_in">console</span>.log(removed);   <span class="regexp">//</span>输出[<span class="string">'angel'</span>, <span class="string">'clown'</span>, <span class="string">'drum'</span>, <span class="string">'mandarin'</span>, <span class="string">'surgeon'</span>]  
+</code></pre><h3 id="toString()">toString()</h3>
+<p>toString()方法可以将一个指定数组转换成字符串并返回。<br>语法：  </p>
+<pre><code>arr<span class="preprocessor">.toString</span>()<span class="comment">;  </span>
+</code></pre><p>例如：  </p>
+<pre><code><span class="keyword">var</span> monthNames = [<span class="string">'Jan'</span>, <span class="string">'Feb'</span>, <span class="string">'Mar'</span>, <span class="string">'Apr'</span>];
+<span class="keyword">var</span> myVar = monthNames.toString();  
+console.log(myVar);  <span class="comment">//输出Jan,Feb,Mar,Apr  </span>
+</code></pre><h3 id="unshift()">unshift()</h3>
+<p>unshift()方法可以添加一个或多个元素到数组的开端，并返回新数组的长度。<br>语法：  </p>
+<pre><code>arr.unshift(element1, <span class="keyword">...</span>, elementN);  
+</code></pre><p>例如：  </p>
+<pre><code>var arr = [<span class="number">1</span>, <span class="number">2</span>];
+arr.unshift(<span class="number">0</span>);   // result <span class="keyword">of</span> call <span class="keyword">is</span> <span class="number">3</span>, the <span class="keyword">new</span> <span class="keyword">array</span> length
+// arr <span class="keyword">is</span> [<span class="number">0</span>, <span class="number">1</span>, <span class="number">2</span>]
+arr.unshift(-<span class="number">2</span>, -<span class="number">1</span>);   // = <span class="number">5</span>
+// arr <span class="keyword">is</span> [-<span class="number">2</span>, -<span class="number">1</span>, <span class="number">0</span>, <span class="number">1</span>, <span class="number">2</span>]
+arr.unshift( [-<span class="number">3</span>] );
+// arr <span class="keyword">is</span> [[-<span class="number">3</span>], -<span class="number">2</span>, -<span class="number">1</span>, <span class="number">0</span>, <span class="number">1</span>, <span class="number">2</span>]  
+</code></pre><h3 id="valueOf()">valueOf()</h3>
+<p>valueOf()方法返回指定对象的原始值。<br>语法：  </p>
+<pre><code><span class="built_in">Object</span>.valueOf();  
+</code></pre><p>例如：  </p>
+<pre><code>myNumberType.prototype.valueOf = <span class="function"><span class="keyword">function</span> <span class="params">()</span> {</span>   
+    <span class="keyword">return</span> customPrimitiveValue;   
+};
+</code></pre>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://f2ecouple.github.io/2014/05/22/array-method/" data-id="4e083fk3u9pu8x6w" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JavaScript API/">JavaScript API</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2014/03/31/css21规范-seletors/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">CSS2.1规范-seletors</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/shuang/">shuang</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/xiong/">xiong</a><span class="category-list-count">4</span></li></ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/JavaScript API/">JavaScript API</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/css/">css</a><span class="tag-list-count">6</span></li></ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/JavaScript API/" style="font-size: 10.00px;">JavaScript API</a><a href="/tags/css/" style="font-size: 20.00px;">css</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/05">May 2014</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/03">March 2014</a><span class="archive-list-count">14</span></li></ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recents</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2014/05/22/array-method/">Array method</a>
+          </li>
+        
+          <li>
+            <a href="/2014/03/31/css21规范-seletors/">CSS2.1规范-seletors</a>
+          </li>
+        
+          <li>
+            <a href="/2014/03/30/w3help使用总结-目录分享/">w3help使用总结-目录分享</a>
+          </li>
+        
+          <li>
+            <a href="/2014/03/27/es5规范系列/">ES5规范系列</a>
+          </li>
+        
+          <li>
+            <a href="/2014/03/27/es5的polyfill系列-bind/">ES5的polyfill系列-bind</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2014 Shuang &amp;&amp; Xiong<br>
+      Powered by <a href="http://zespia.tw/hexo/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script type="text/javascript" src="/js/script.js"></script>
+  </div>
+</body>
+</html>
