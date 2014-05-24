@@ -10,7 +10,9 @@
 <meta name="og:url" content="http://f2ecouple.github.io//2014/03/17/用git实现版本管理/">
 <meta name="og:image">
 <meta name="og:site_name" content="F2E COUPLE">
-<meta name="og:description">
+<meta name="og:description" content="本篇文章所弹到的选择器均为CSS3中的选择器
+选择器kill point
+在CSS的选择器中，大家可能会觉得各种的错综复杂，现在我们就一起来捋一捋其中的规则和规律。在CSS3关于选择器的规范中，对选择器的定义为：一个选择器是由一个或者多个简单选择器通过连接符而构成的。在这一句话我们要提取出两个关键词：“简单选择器”和“连接符”。“简单选择器( simple selector)”在CSS3的规范中指">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternative" href="/atom.xml" title="F2E COUPLE" type="application/atom+xml">
@@ -67,6 +69,10 @@
   <time datetime="2014-03-17T01:48:44.000Z" itemprop="datePublished">Mar 17 2014</time>
 </a>
     
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/xiong/">xiong</a>
+  </div>
+
   </div>
   <div class="article-inner">
     
@@ -83,13 +89,29 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        
+        <p><em>本篇文章所弹到的选择器均为CSS3中的选择器</em><br><a id="more"></a></p>
+<h2 id="选择器kill_point">选择器kill point</h2>
+<p>在CSS的选择器中，大家可能会觉得各种的错综复杂，现在我们就一起来捋一捋其中的规则和规律。<br>在CSS3关于选择器的规范中，对选择器的定义为：一个选择器是由一个或者多个简单选择器通过连接符而构成的。在这一句话我们要提取出两个关键词：“简单选择器”和“连接符”。<br>“简单选择器( simple selector)”在CSS3的规范中指定为：类型选择器( type selector), 全局选择器(universal selector), 属性选择器(attribute selector), 类选择器( class selector), ID选择器(ID selector), 或者伪类(pseudo-class)。<br>“连接符 (Combinators)”特指下面四种符号：大于符号(greater than sign)[u+003e, &gt;], 加号(plus sign)[u+002b, +],波浪号(tide)[u+007e, ~]和空格。</p>
+<h2 id="深入CSS3选择器">深入CSS3选择器</h2>
+<p>通过w3c关于CSS3的<a href="http://www.w3.org/TR/css3-selectors/" target="_blank">规范</a>中关于简单选择器的列表，我们不难分析出，在CSS3对简单选择器对变化中主要是针对属性选择器和伪类的。通过这些新增的选择器我们能够找到更多想要的内容。</p>
+<h3 id="属性选择器">属性选择器</h3>
+<p>如果说CSS2中属性选择器完成的是对一个元素有特定属性的选择，那么在CSS3中属性选择器更多的有了正则的成分在里面。在CSS3中属性选择器增加了类似正则里面“^”的开始选择符，”$”结尾选择符和“*”通配符。</p>
+<p><strong>E[foo^=”bar”]</strong>：以某个值开始的选择器。<br>在下面的例子中，我们通过开始属性选择符，选择出了属性以xiao开头的标签。</p>
+<p><div data-height="268" data-theme-id="6293" data-slug-hash="yeCkn" data-default-tab="html" class='codepen'><pre><code>&lt;div&gt;<br>  &lt;p shawn=&quot;xiaohero&quot;&gt;This is test for xiao&lt;/p&gt;<br>  &lt;p shawn=&quot;shuanghero&quot;&gt;This is test for shuang&lt;/p&gt;<br>  &lt;p shawn=&quot;xiongxiao&quot;&gt;This is test for xiong xiao&lt;/p&gt;<br>  &lt;p shawn=&quot;xiaoxiong&quot;&gt;This is test for xiao xiong&lt;/p&gt;<br>&lt;/div&gt;</code></pre></p>
+<p><p>See the Pen <a href='http://codepen.io/f2ecouple/pen/yeCkn/'>yeCkn</a> by shawnxiao (<a href='http://codepen.io/f2ecouple'>@f2ecouple</a>) on <a href='http://codepen.io'>CodePen</a>.</p><br></div><script async src="//codepen.io/assets/embed/ei.js"></script></p>
+<p>这个属性选择符在实际的应用中，我们可以用来对选择器进行分类，比如给元素区分位置信息，选择出相似的元素。</p>
+<p><div data-height="268" data-theme-id="6293" data-slug-hash="yeCkn" data-default-tab="html" class='codepen'><pre><code>&lt;div&gt;<br>  &lt;p data-log-position=&quot;PLUGIN_HISTORY_CLICK&quot;&gt;PLUGIN_HISTORY_CLICK&lt;/p&gt;<br>  &lt;p data-log-position=&quot;PLUGIN_HISTORY_CLICK&quot;&gt;PLUGIN_HISTORY_CLICK&lt;/p&gt;<br>  &lt;p data-log-position=&quot;BAR_HISTORY_CLICK&quot;&gt;BAR_HISTORY_CLICK&lt;/p&gt;<br>  &lt;p data-log-position=&quot;POPUP_HISTORY_CLICK&quot;&gt;POPUP_HISTORY_CLICK&lt;/p&gt;<br>&lt;/div&gt;</code></pre></p>
+<p><p>See the Pen <a href='http://codepen.io/f2ecouple/pen/yeCkn/'>yeCkn</a> by shawnxiao (<a href='http://codepen.io/f2ecouple'>@f2ecouple</a>) on <a href='http://codepen.io'>CodePen</a>.</p><br></div><script async src="//codepen.io/assets/embed/ei.js"></script></p>
+<p><strong>E[foo$=”bar”]</strong>:以某个值结束的选择器。<br>这个和正则符中的结尾有异曲同工的作用，选择出属性以某个值结束的标签。</p>
+
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://f2ecouple.github.io/2014/03/17/用git实现版本管理/" data-id="lv42ptk22emrhhy0" class="article-share-link">Share</a>
+      <a data-url="http://f2ecouple.github.io/2014/03/17/用git实现版本管理/" data-id="0jpn4eq2d7divu92" class="article-share-link">Share</a>
       
       
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/CSS3/">CSS3</a></li></ul>
+
     </footer>
   </div>
   
@@ -125,7 +147,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Categories</h3>
     <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/shuang/">shuang</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/xiong/">xiong</a><span class="category-list-count">4</span></li></ul>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/shuang/">shuang</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/xiong/">xiong</a><span class="category-list-count">5</span></li></ul>
     </div>
   </div>
 
@@ -134,7 +156,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tags</h3>
     <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/JavaScript API/">JavaScript API</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/css/">css</a><span class="tag-list-count">6</span></li></ul>
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSS3/">CSS3</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JavaScript API/">JavaScript API</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/css/">css</a><span class="tag-list-count">6</span></li></ul>
     </div>
   </div>
 
@@ -143,7 +165,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/tags/JavaScript API/" style="font-size: 10.00px;">JavaScript API</a><a href="/tags/css/" style="font-size: 20.00px;">css</a>
+      <a href="/tags/CSS3/" style="font-size: 10.00px;">CSS3</a><a href="/tags/JavaScript API/" style="font-size: 15.00px;">JavaScript API</a><a href="/tags/css/" style="font-size: 20.00px;">css</a>
     </div>
   </div>
 
