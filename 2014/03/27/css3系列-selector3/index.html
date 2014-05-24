@@ -111,6 +111,7 @@
 <li>加号(plus sign)[u+002b, +]</li>
 <li>波浪号(tide)[u+007e, ~]和空格。</li>
 </ul>
+<hr>
 <h2 id="深入CSS3选择器">深入CSS3选择器</h2>
 <p>通过w3c关于CSS3的<a href="http://www.w3.org/TR/css3-selectors/" target="_blank">规范</a>中关于简单选择器的列表，我们不难分析出，在CSS3对简单选择器对变化中主要是针对属性选择器和伪类的。通过这些新增的选择器我们能够找到更多想要的内容。</p>
 <h3 id="属性选择器">属性选择器</h3>
@@ -121,11 +122,125 @@
 <p><strong>E[foo$=”bar”]</strong>:以某个值结束的选择器。<br>这个和正则符中的结尾有异曲同工的作用，选择出属性以某个值结束的标签。</p>
 <p><div data-height="268" data-theme-id="6293" data-slug-hash="rIitH" data-default-tab="html" class='codepen'><pre><code>&lt;div&gt;<br>&lt;p data-log-position=&quot;PLUGIN_HISTORY_CLICK&quot;&gt;PLUGIN_HISTORY_CLICK&lt;/p&gt;<br>&lt;p data-log-position=&quot;PLUGIN_HISTORY_CLICK&quot;&gt;PLUGIN_HISTORY_CLICK&lt;/p&gt;<br>&lt;p data-log-position=&quot;BAR_HISTORY_HOVER&quot;&gt;BAR_HISTORY_HOVER&lt;/p&gt;<br>&lt;p data-log-position=&quot;POPUP_HISTORY_CLICK&quot;&gt;POPUP_HISTORY_CLICK&lt;/p&gt;<br>&lt;/div&gt;</code></pre></p>
 <p><p>See the Pen <a href='http://codepen.io/f2ecouple/pen/rIitH/'>rIitH</a> by shawnxiao (<a href='http://codepen.io/f2ecouple'>@f2ecouple</a>) on <a href='http://codepen.io'>CodePen</a>.</p><br></div><script async src="//codepen.io/assets/embed/ei.js"></script></p>
+<p><strong>E[foo*=”bar”]</strong>:属性中包含某个值得选择器。<br>简单来说，这个其实是一个通配符，及有就可，无需在乎位置。</p>
+<p><p data-height="268" data-theme-id="6293" data-slug-hash="fAday" data-default-tab="result" class='codepen'>See the Pen <a href='http://codepen.io/f2ecouple/pen/fAday/'>fAday</a> by shawnxiao (<a href='http://codepen.io/f2ecouple'>@f2ecouple</a>) on <a href='http://codepen.io'>CodePen</a>.</p></p>
+<script async src="//codepen.io/assets/embed/ei.js"></script>
+
+<h3 id="伪类选择器">伪类选择器</h3>
+<p>在CSS3相关的选择器中，对伪类选择器的增加可是重重之重。<br>在这里我们对增加的CSS伪类选择器还是进行一系列的分类。</p>
+<h4 id="结构型伪类选择器(Structural_pseudo-classes)">结构型伪类选择器(Structural pseudo-classes)</h4>
+<p>在CSS3中总共增加了11个结构型伪类选择器，加上CSS2中的结构型伪类选择器，一个有12个结构型伪类选择器。<br>虽然在CSS3的规范中没有对结构型伪类选择器再次分类，但是我们仔细观察规范者在设计时还是有所考虑的。<br>总体来说分为：从所处位置进行筛选(nth, first, last)，对关系进行筛选(child, sibling)。然后剩下的更多的就是排列和组合的过程了。</p>
+<ul>
+<li>从元素关系入手: child, sibling<ul>
+<li>chilid类型：E:nth-child(n), E:nth-last-child(n), E:first-child, E:last-child, E:only-child, </li>
+<li>sibling类型：E:nth-type(n), E:nth-last-type(n), E:first-of-type, E:last-of-type, E:only-of-type</li>
+</ul>
+</li>
+<li>从所处位置进行分类：nth, last, first, only<ul>
+<li>nth: E:nth-child(n), E:nth-last-child(n), E:nth-type(n), E:nth-last-type(n)</li>
+<li>first: E:first-child,  E:first-of-type</li>
+<li>last: E:last-child, E:last-of-type</li>
+<li>only: E:only-child, E:only-of-type</li>
+</ul>
+</li>
+</ul>
+<p>对于结构型伪类选择器的n的参数的计算方法都可参加下表：</p>
+<table>
+<thead>
+<tr>
+<th>n</th>
+<th>2n - 1</th>
+<th>2n + 1</th>
+<th>-2n + 4</th>
+<th>2n</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>-</td>
+<td>1</td>
+<td>4</td>
+<td>-</td>
+</tr>
+<tr>
+<td>1</td>
+<td>1</td>
+<td>3</td>
+<td>2</td>
+<td>2</td>
+</tr>
+<tr>
+<td>2</td>
+<td>3</td>
+<td>5</td>
+<td>-</td>
+<td>4</td>
+</tr>
+<tr>
+<td>3</td>
+<td>5</td>
+<td>7</td>
+<td>-</td>
+<td>6</td>
+</tr>
+<tr>
+<td>4</td>
+<td>7</td>
+<td>9</td>
+<td>-</td>
+<td>8</td>
+</tr>
+</tbody>
+</table>
+<p>这里举一些比较有代表性的例子来说明结构型伪类选择器。</p>
+<hr>
+<p><strong>E:nth-child(n)</strong>:选择一个父元素的第n个子元素。<br><strong>li:nth-child(-2n + 4)</strong></p>
+<p><p data-height="268" data-theme-id="6293" data-slug-hash="kqEHv" data-default-tab="result" class='codepen'>See the Pen <a href='http://codepen.io/f2ecouple/pen/kqEHv/'>kqEHv</a> by shawnxiao (<a href='http://codepen.io/f2ecouple'>@f2ecouple</a>) on <a href='http://codepen.io'>CodePen</a>.</p></p>
+<script async src="//codepen.io/assets/embed/ei.js"></script>
+
+<hr>
+<p><strong>li:nth-child(odd)</strong></p>
+<p><p data-height="268" data-theme-id="6293" data-slug-hash="GwIiE" data-default-tab="result" class='codepen'>See the Pen <a href='http://codepen.io/f2ecouple/pen/GwIiE/'>GwIiE</a> by shawnxiao (<a href='http://codepen.io/f2ecouple'>@f2ecouple</a>) on <a href='http://codepen.io'>CodePen</a>.</p></p>
+<script async src="//codepen.io/assets/embed/ei.js"></script>
+
+<hr>
+<p><strong>E:nth-last-child(n)</strong>:从最后一个开始算的第n个子元素<br>n的取值形式：an + b(a, b为整数), odd, even</p>
+<p><p data-height="268" data-theme-id="6293" data-slug-hash="ixoha" data-default-tab="result" class='codepen'>See the Pen <a href='http://codepen.io/f2ecouple/pen/ixoha/'>ixoha</a> by shawnxiao (<a href='http://codepen.io/f2ecouple'>@f2ecouple</a>) on <a href='http://codepen.io'>CodePen</a>.</p></p>
+<script async src="//codepen.io/assets/embed/ei.js"></script>
+
+<hr>
+<p><strong>E:only-child</strong>:该元素的父元素只有一个这样的子元素。</p>
+<p><p data-height="268" data-theme-id="6293" data-slug-hash="tLFkw" data-default-tab="result" class='codepen'>See the Pen <a href='http://codepen.io/f2ecouple/pen/tLFkw/'>tLFkw</a> by shawnxiao (<a href='http://codepen.io/f2ecouple'>@f2ecouple</a>) on <a href='http://codepen.io'>CodePen</a>.</p></p>
+<script async src="//codepen.io/assets/embed/ei.js"></script>
+
+<hr>
+<p><strong>E:nth-type(n)</strong>: E元素，同为该类型的第n个兄弟元素。</p>
+<p><p data-height="268" data-theme-id="6293" data-slug-hash="yIbHm" data-default-tab="result" class='codepen'>See the Pen <a href='http://codepen.io/f2ecouple/pen/yIbHm/'>yIbHm</a> by shawnxiao (<a href='http://codepen.io/f2ecouple'>@f2ecouple</a>) on <a href='http://codepen.io'>CodePen</a>.</p></p>
+<script async src="//codepen.io/assets/embed/ei.js"></script>
+
+<hr>
+<h4 id="目标伪类选择器(Target_pseudo-classes)">目标伪类选择器(Target pseudo-classes)</h4>
+<p>目标伪类选择器，可能大家一听到这个名词是不是很好理解。但是说一个场景，当有一个需求是通过链接在页面的段落间进行跳转时，大家会怎么去做？如果对跳转的效果没有过多的<br>要求时，相信大家首先想到的方法是，给anchor标签的herf属性设定为“#ID”,这里的ID为需要跳转到的元素的ID。其实在这里需要跳转到的那个元素就叫target。话不多说，大家直接点下面demo<br>中的链接，然后观察段落颜色的变化，相信会明白目标伪类选择器器的作用。<br><strong>E:target</strong></p>
+<p><p data-height="268" data-theme-id="6293" data-slug-hash="KwGqe" data-default-tab="result" class='codepen'>See the Pen <a href='http://codepen.io/f2ecouple/pen/KwGqe/'>KwGqe</a> by shawnxiao (<a href='http://codepen.io/f2ecouple'>@f2ecouple</a>) on <a href='http://codepen.io'>CodePen</a>.</p></p>
+<script async src="//codepen.io/assets/embed/ei.js"></script>
+
+<h4 id="UI元素状态伪类选择器(The_UI_elements_states_pseudo-classes)">UI元素状态伪类选择器(The UI elements states pseudo-classes)</h4>
+<p><strong>enable 和 disabled</strong><br>disabled伪类即选择元素状态为disabled的元素，这种元素通常是不能被聚焦或者激活的元素，它有diabled属性。</p>
+<p><p data-height="268" data-theme-id="6293" data-slug-hash="LIaAd" data-default-tab="result" class='codepen'>See the Pen <a href='http://codepen.io/f2ecouple/pen/LIaAd/'>LIaAd</a> by shawnxiao (<a href='http://codepen.io/f2ecouple'>@f2ecouple</a>) on <a href='http://codepen.io'>CodePen</a>.</p></p>
+<script async src="//codepen.io/assets/embed/ei.js"></script>
+
+<p><strong>checked伪类选择器</strong><br>对于checkebox或者radio button一类的元素，当为选中状态时的伪类选择器。</p>
+<p><p data-height="268" data-theme-id="6293" data-slug-hash="wBtrI" data-default-tab="result" class='codepen'>See the Pen <a href='http://codepen.io/f2ecouple/pen/wBtrI/'>wBtrI</a> by shawnxiao (<a href='http://codepen.io/f2ecouple'>@f2ecouple</a>) on <a href='http://codepen.io'>CodePen</a>.</p></p>
+<script async src="//codepen.io/assets/embed/ei.js"></script>
+
+<h3 id="逻辑非伪类选择器(Negation_pseudo-classes)">逻辑非伪类选择器(Negation pseudo-classes)</h3>
+<p>逻辑非伪类选择器，即:not(x)选择器，这里的x可以是任意简单选择器(Simple selector)</p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://f2ecouple.github.io/2014/03/27/css3系列-selector3/" data-id="xmjamv3bu0j6v7z4" class="article-share-link">Share</a>
+      <a data-url="http://f2ecouple.github.io/2014/03/27/css3系列-selector3/" data-id="cs1i0vhhi9dbf9z2" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/CSS3/">CSS3</a></li></ul>
