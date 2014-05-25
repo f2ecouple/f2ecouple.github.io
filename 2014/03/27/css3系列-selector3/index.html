@@ -10,11 +10,11 @@
 <meta name="og:url" content="http://f2ecouple.github.io//2014/03/27/css3系列-selector3/">
 <meta name="og:image">
 <meta name="og:site_name" content="F2E COUPLE">
-<meta name="og:description" content="本篇文章所弹到的选择器均为CSS3中的选择器
+<meta name="og:description" content="本篇文章所谈到的选择器均为CSS3中的选择器
 选择器kill point
 在CSS的选择器中，大家可能会觉得各种的错综复杂，现在我们就一起来捋一捋其中的规则和规律。在CSS3关于选择器的规范中，对选择器的定义为：一个选择器是由一个或者多个简单选择器通过连接符而构成的。在这一句话我们要提取出两个关键词：“简单选择器”和“连接符”。
 
-“简单选择器( simple selector)”在CSS3的规范">
+“简单选择器( simple selector )”在CSS3的规">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternative" href="/atom.xml" title="F2E COUPLE" type="application/atom+xml">
@@ -91,25 +91,25 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p><em>本篇文章所弹到的选择器均为CSS3中的选择器</em><br><a id="more"></a></p>
+        <p><em>本篇文章所谈到的选择器均为CSS3中的选择器</em><br><a id="more"></a></p>
 <h2 id="选择器kill_point">选择器kill point</h2>
 <p>在CSS的选择器中，大家可能会觉得各种的错综复杂，现在我们就一起来捋一捋其中的规则和规律。<br>在CSS3关于选择器的规范中，对选择器的定义为：一个选择器是由一个或者多个简单选择器通过连接符而构成的。在这一句话我们要提取出两个关键词：“简单选择器”和“连接符”。</p>
 <hr>
-<p><em>“简单选择器( simple selector)”</em>在CSS3的规范中指定为：</p>
+<p><em>“简单选择器( simple selector )”</em>在CSS3的规范中指定为：</p>
 <ul>
-<li>类型选择器( type selector) </li>
-<li>全局选择器(universal selector) </li>
-<li>属性选择器(attribute selector) </li>
-<li>类选择器( class selector)</li>
-<li>ID选择器(ID selector)</li>
-<li>伪类(pseudo-class)</li>
+<li>类型选择器( type selector ) </li>
+<li>全局选择器( universal selector ) </li>
+<li>属性选择器( attribute selector ) </li>
+<li>类选择器( class selector )</li>
+<li>ID选择器( ID selector )</li>
+<li>伪类( pseudo-class )</li>
 </ul>
 <hr>
-<p><em>“连接符 (Combinators)”</em>特指下面四种符号：</p>
+<p><em>“连接符( Combinators )”</em>特指下面四种符号：</p>
 <ul>
-<li>大于符号(greater than sign)[u+003e, &gt;]</li>
-<li>加号(plus sign)[u+002b, +]</li>
-<li>波浪号(tide)[u+007e, ~]和空格。</li>
+<li>大于符号( greater than sign )[u+003e, &gt;]</li>
+<li>加号( plus sign )[u+002b, +]</li>
+<li>波浪号( tide )[u+007e, ~]和空格。</li>
 </ul>
 <hr>
 <h2 id="深入CSS3选择器">深入CSS3选择器</h2>
@@ -122,7 +122,7 @@
 <p><strong>E[foo$=”bar”]</strong>:以某个值结束的选择器。<br>这个和正则符中的结尾有异曲同工的作用，选择出属性以某个值结束的标签。</p>
 <p><div data-height="268" data-theme-id="6293" data-slug-hash="rIitH" data-default-tab="html" class='codepen'><pre><code>&lt;div&gt;<br>&lt;p data-log-position=&quot;PLUGIN_HISTORY_CLICK&quot;&gt;PLUGIN_HISTORY_CLICK&lt;/p&gt;<br>&lt;p data-log-position=&quot;PLUGIN_HISTORY_CLICK&quot;&gt;PLUGIN_HISTORY_CLICK&lt;/p&gt;<br>&lt;p data-log-position=&quot;BAR_HISTORY_HOVER&quot;&gt;BAR_HISTORY_HOVER&lt;/p&gt;<br>&lt;p data-log-position=&quot;POPUP_HISTORY_CLICK&quot;&gt;POPUP_HISTORY_CLICK&lt;/p&gt;<br>&lt;/div&gt;</code></pre></p>
 <p><p>See the Pen <a href='http://codepen.io/f2ecouple/pen/rIitH/'>rIitH</a> by shawnxiao (<a href='http://codepen.io/f2ecouple'>@f2ecouple</a>) on <a href='http://codepen.io'>CodePen</a>.</p><br></div><script async src="//codepen.io/assets/embed/ei.js"></script></p>
-<p><strong>E[foo*=”bar”]</strong>:属性中包含某个值得选择器。<br>简单来说，这个其实是一个通配符，及有就可，无需在乎位置。</p>
+<p><strong>E[foo*=”bar”]</strong>:属性中包含某个值的选择器。<br>简单来说，这个其实是一个通配符，及有就可，无需在乎位置。</p>
 <p><p data-height="268" data-theme-id="6293" data-slug-hash="fAday" data-default-tab="result" class='codepen'>See the Pen <a href='http://codepen.io/f2ecouple/pen/fAday/'>fAday</a> by shawnxiao (<a href='http://codepen.io/f2ecouple'>@f2ecouple</a>) on <a href='http://codepen.io'>CodePen</a>.</p></p>
 <script async src="//codepen.io/assets/embed/ei.js"></script>
 
@@ -236,11 +236,13 @@
 
 <h3 id="逻辑非伪类选择器(Negation_pseudo-classes)">逻辑非伪类选择器(Negation pseudo-classes)</h3>
 <p>逻辑非伪类选择器，即:not(x)选择器，这里的x可以是任意简单选择器(Simple selector)</p>
+<p><p data-height="257" data-theme-id="6293" data-slug-hash="djKuA" data-default-tab="result" class='codepen'>See the Pen <a href='http://codepen.io/f2ecouple/pen/djKuA/'>djKuA</a> by shawnxiao (<a href='http://codepen.io/f2ecouple'>@f2ecouple</a>) on <a href='http://codepen.io'>CodePen</a>.</p></p>
+<script async src="//codepen.io/assets/embed/ei.js"></script>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://f2ecouple.github.io/2014/03/27/css3系列-selector3/" data-id="cs1i0vhhi9dbf9z2" class="article-share-link">Share</a>
+      <a data-url="http://f2ecouple.github.io/2014/03/27/css3系列-selector3/" data-id="iwtojm2z42r9xrr3" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/CSS3/">CSS3</a></li></ul>
