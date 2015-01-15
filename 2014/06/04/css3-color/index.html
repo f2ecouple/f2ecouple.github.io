@@ -3,14 +3,17 @@
 <head>
   <meta charset="utf-8">
   
-  <title>ES5的polyfill系列-bind | F2E COUPLE</title>
+  <title>css3系列-color | F2E COUPLE</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="og:type" content="blog">
-<meta name="og:title" content="ES5的polyfill系列-bind">
-<meta name="og:url" content="http://f2ecouple.github.io//2014/03/27/es5的polyfill系列-bind/">
+<meta name="og:title" content="css3系列-color">
+<meta name="og:url" content="http://f2ecouple.github.io//2014/06/04/css3-color/">
 <meta name="og:image">
 <meta name="og:site_name" content="F2E COUPLE">
-<meta name="og:description">
+<meta name="og:description" content="在CSS3的 color 模块中，不仅仅对CSS1和CSS2中部分的概念进行了阐释，也增加了一些颜色相关的特性。
+CSS3 Color中增加的特性
+‘opacity’属性
+CSS3中新增的opacity, 即对元素透明度的控制。它的值的范围[0.0, 1.0]。opacity对我们的直观感觉是只会影响到元素的显示特性，其实不然，它对元素的层叠上下文也会有影响。opacity值小于1的元素在规范中叫">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternative" href="/atom.xml" title="F2E COUPLE" type="application/atom+xml">
@@ -75,12 +78,16 @@
 </header>
 
       <div class="outer">
-        <section id="main"><article id="post-es5的polyfill系列-bind" class="article article-type-post" itemscope itemprop="blogPost">
+        <section id="main"><article id="post-css3-color" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2014/03/27/es5的polyfill系列-bind/" class="article-date">
-  <time datetime="2014-03-26T22:58:22.000Z" itemprop="datePublished">Mar 27 2014</time>
+    <a href="/2014/06/04/css3-color/" class="article-date">
+  <time datetime="2014-06-04T01:32:14.000Z" itemprop="datePublished">Jun 4 2014</time>
 </a>
     
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/xiong/">xiong</a>
+  </div>
+
   </div>
   <div class="article-inner">
     
@@ -89,7 +96,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      ES5的polyfill系列-bind
+      css3系列-color
     </h1>
   
 
@@ -97,32 +104,43 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        
+        <p>在CSS3的 color 模块中，不仅仅对CSS1和CSS2中部分的概念进行了阐释，也增加了一些颜色相关的特性。<br><a id="more"></a></p>
+<h2 id="CSS3_Color中增加的特性">CSS3 Color中增加的特性</h2>
+<h3 id="‘opacity’属性">‘opacity’属性</h3>
+<p>CSS3中新增的opacity, 即对元素透明度的控制。它的值的范围[0.0, 1.0]。opacity对我们的直观感觉是只会影响到元素的显示特性，其实不然，它对元素<br>的层叠上下文也会有影响。<br>opacity值小于1的元素在规范中叫做一个单独脱离屏幕的图像(a single offscreen image)。<br>浏览器会为opacity小于1的元素创建一个层叠上下文，即对于一个非定位元素(position为static)<br>的opacity小于1的元素它相当于是一个’z-index:0’和’opacity:1’的定位元素。</p>
+<p>关于层叠上下文的示例：</p>
+<p><p data-height="257" data-theme-id="6293" data-slug-hash="KIicu" data-default-tab="result" class='codepen'>See the Pen <a href='http://codepen.io/f2ecouple/pen/KIicu/'>KIicu</a> by shawnxiao (<a href='http://codepen.io/f2ecouple'>@f2ecouple</a>) on <a href='http://codepen.io'>CodePen</a>.</p></p>
+<script async src="//codepen.io/assets/embed/ei.js"></script>
+
+<h3 id="‘RGBA’颜色值">‘RGBA’颜色值</h3>
+<p>CSS3对RGB颜色模型进行了扩充，包含了’alpha’,以此来需要颜色的透明度。<br>注意:<br>1, 不像RGB颜色模型，RGBA中没有16进制的表示方法。<br>2, 当浏览器不支持RGBA时，会被当做无用值，而不只是alpha不起作用</p>
+<h3 id="‘opacity’_和_‘RGBA’的区别">‘opacity’ 和 ‘RGBA’的区别</h3>
+<p>‘opacity’是让应用于整个元素的透明度，子元素的透明度的计算以父元素的透明度为基准。<br>下面第一个例子中，父元素的opacity为：0.4, 子元素的为: 0.8, 由于子元素是在父元素的基准上进行计算，所以子元素实际的opacity为:0.32</p>
+<p>‘background:rgba(255, 233,232, 0.5)’则只是应用于背景，而其文字和背景都不受任何影响。</p>
+<p><p data-height="257" data-theme-id="6293" data-slug-hash="aHgAj" data-default-tab="result" class='codepen'>See the Pen <a href='http://codepen.io/f2ecouple/pen/aHgAj/'>aHgAj</a> by shawnxiao (<a href='http://codepen.io/f2ecouple'>@f2ecouple</a>) on <a href='http://codepen.io'>CodePen</a>.</p></p>
+<script async src="//codepen.io/assets/embed/ei.js"></script>
+
+<h3 id="HSL颜色值">HSL颜色值</h3>
+<p>hsl颜色值的解析详见<a href="http://en.wikipedia.org/wiki/HSL_and_HSV" target="_blank">wikipedia</a>, 暂时不能理解为什么会有这个，以及这个的坑…</p>
+
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://f2ecouple.github.io/2014/03/27/es5的polyfill系列-bind/" data-id="oao5o2b00ane0hs0" class="article-share-link">Share</a>
+      <a data-url="http://f2ecouple.github.io/2014/06/04/css3-color/" data-id="vehdlk8mjw76d2l9" class="article-share-link">Share</a>
       
       
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/CSS3/">CSS3</a></li></ul>
+
     </footer>
   </div>
   
     
 <nav id="article-nav">
   
-    <a href="/2014/03/27/es5规范系列/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Newer</strong>
-      <div class="article-nav-title">
-        
-          ES5规范系列
-        
-      </div>
-    </a>
   
-  
-    <a href="/2014/03/27/css3系列-selector3/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/2014/05/22/window-methods/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">CSS3系列-selector3</div>
+      <div class="article-nav-title">Window methods</div>
     </a>
   
 </nav>
@@ -167,7 +185,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/06">June 2014</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/05">May 2014</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/03">March 2014</a><span class="archive-list-count">14</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/06">June 2014</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/05">May 2014</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/03">March 2014</a><span class="archive-list-count">13</span></li></ul>
     </div>
   </div>
 
@@ -179,7 +197,7 @@
       <ul>
         
           <li>
-            <a href="/2014/06/04/css3系列-color/">css3系列-color</a>
+            <a href="/2014/06/04/css3-color/">css3系列-color</a>
           </li>
         
           <li>
@@ -195,7 +213,7 @@
           </li>
         
           <li>
-            <a href="/2014/03/30/w3help使用总结-目录分享/">w3help使用总结-目录分享</a>
+            <a href="/2014/03/30/w3help目录分享/">w3help使用总结-目录分享</a>
           </li>
         
       </ul>
